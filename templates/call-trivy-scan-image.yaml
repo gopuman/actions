@@ -31,7 +31,7 @@ jobs:
     ### https://docs.github.com/en/actions/learn-github-actions/reusing-workflows
     ### you can also call workflows from inside the same repo via file path
     
-    uses: mostlydevops/actions/.github/workflows/reusable-trivy-scan-image.yaml@main
+    uses: gopuman/actions/.github/workflows/reusable-trivy-scan-image.yaml@main
 
     secrets:
     

@@ -30,7 +30,7 @@ jobs:
   docker-build-pr:
     name: Call Build on PR
     if: github.event_name == 'pull_request'
-    uses: mostlydevops/actions/.github/workflows/reusable-docker-build.yaml@main
+    uses: gopuman/actions/.github/workflows/reusable-docker-build.yaml@main
     with:
       # DON'T login to or push to Docker Hub
       dockerhub-enable: false
@@ -46,7 +46,7 @@ jobs:
     name: Call Build on Push
     # this if is filtered to only the main branch push event (see events at top)
     if: github.event_name == 'push'
-    uses: mostlydevops/actions/.github/workflows/reusable-docker-build.yaml@main
+    uses: gopuman/actions/.github/workflows/reusable-docker-build.yaml@main
     secrets:
       dockerhub-username: ${{ secrets.DOCKERHUB_USERNAME }}
       dockerhub-token: ${{ secrets.DOCKERHUB_TOKEN }}
@@ -71,7 +71,7 @@ jobs:
     name: Call GitOps PR
     if: github.event_name == 'push'
     needs: docker-build-pr
-    uses: mostlydevops/actions/.github/workflows/reusable-gitops-pr.yaml
+    uses: gopuman/actions/.github/workflows/reusable-gitops-pr.yaml
     secrets:
       ## github token with write access to the gitops repo
       github-token: ${{ secrets.GITOPS_TOKEN }}
@@ -79,7 +79,7 @@ jobs:
       # slack-token: ${{ secrets.SLACK_BOT_TOKEN }}
     with:
       # your gitops repo
-      repo: mostlydevops/wordsmith-k8s
+      repo: gopuman/wordsmith-k8s
       ## The environment dir path, defaults to `environments`
       # environments-root-dir: environments
       ## FIXME: change to the subdirector of `environments-root-dir` that contains the kustomization.yaml

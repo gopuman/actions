@@ -26,7 +26,7 @@ jobs:
 
     name: Call Docker Build
 
-    uses: mostlydevops/actions/.github/workflows/reusable-docker-build.yaml@main
+    uses: gopuman/actions/.github/workflows/reusable-docker-build.yaml@main
 
     permissions:
       contents: read
